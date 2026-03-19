@@ -1,0 +1,2558 @@
+Project Overview
+===============
+
+Project Statistics:
+Total Files: 79
+Total Size: 1.41 MB
+
+
+Folder Structure (Tree)
+=====================
+Legend: ✗ = Excluded from output
+
+├── .env.example 
+├── .gitignore 
+├── .pytest_cache/
+│   ├── .gitignore 
+│   ├── CACHEDIR.TAG 
+│   ├── README.md 
+│   └── v/
+├── alembic/
+│   ├── env.py 
+│   ├── README 
+│   ├── script.py.mako 
+│   ├── versions/
+│   │   ├── 4a25a4f7ac48_add_full_text_to_jobs.py 
+│   │   ├── 889cb2cfdb5b_initial_migration_sqlite.py 
+│   │   ├── initial_migration_sqlite.py 
+│   │   └── __pycache__/
+│   └── __pycache__/
+├── alembic.ini 
+├── app/
+│   ├── api/
+│   │   ├── v1/
+│   │   │   ├── api.py 
+│   │   │   ├── endpoints/
+│   │   │   │   ├── admin.py 
+│   │   │   │   ├── health.py 
+│   │   │   │   ├── jobs.py 
+│   │   │   │   ├── __init__.py 
+│   │   │   │   └── __pycache__/
+│   │   │   ├── __init__.py 
+│   │   │   └── __pycache__/
+│   │   ├── __init__.py 
+│   │   └── __pycache__/
+│   ├── core/
+│   │   ├── celery_app.py 
+│   │   ├── config.py 
+│   │   ├── init_admin.py 
+│   │   ├── limiter.py 
+│   │   ├── security.py 
+│   │   ├── __init__.py 
+│   │   └── __pycache__/
+│   ├── db/
+│   │   ├── models/
+│   │   │   ├── base.py 
+│   │   │   ├── models.py 
+│   │   │   ├── __init__.py 
+│   │   │   └── __pycache__/
+│   │   ├── session.py 
+│   │   ├── __init__.py 
+│   │   └── __pycache__/
+│   ├── main.py 
+│   ├── schemas/
+│   │   └── __init__.py 
+│   ├── services/
+│   │   ├── extraction_service.py 
+│   │   ├── llm_service.py 
+│   │   ├── rate_limit_service.py 
+│   │   ├── storage_service.py 
+│   │   ├── __init__.py 
+│   │   └── __pycache__/
+│   ├── static/
+│   ├── templates/
+│   │   └── admin/
+│   │       └── dashboard.html 
+│   ├── workers/
+│   │   ├── tasks.py 
+│   │   ├── __init__.py 
+│   │   └── __pycache__/
+│   ├── __init__.py 
+│   └── __pycache__/
+├── check_db.py 
+├── check_imports.py 
+├── create_key.py 
+├── docker-compose.yml 
+├── Dockerfile 
+├── docxy.db  ✗
+├── README.md 
+├── requirements.txt 
+├── run.py 
+├── tests/
+│   ├── test_auth.py 
+│   ├── test_health.py 
+│   ├── test_workers.py 
+│   └── __pycache__/
+├── trial/
+│   └── test_api.py 
+└── uploads/
+    ├── b4c405e8-88c4-4edc-ae28-49d643a2270c/
+    │   ├── 00ffad3f-8d14-4ab7-a870-05386efdf28e/
+    │   ├── 020f6f1f-2c0d-48d4-878f-51a60c44df8e/
+    │   ├── 0db68c53-e5ae-4776-ad14-d5567ea4b89e/
+    │   ├── 12174ee9-b955-4ec1-8c02-b8b709bf7010/
+    │   ├── 1477e775-032b-4752-a40b-88ba990749c9/
+    │   ├── 2ad19579-6055-4687-b655-cfcb378ce863/
+    │   ├── 2c42db17-851b-4d51-9ad7-b63a5f70c643/
+    │   ├── 2e03e21c-ebd8-4042-8c6c-7e38acd062ab/
+    │   ├── 2ed4c3e8-4de4-4449-95ab-9fe7aa5380d0/
+    │   ├── 397b442c-8e08-4d73-9a0a-f27a848c3828/
+    │   ├── 3b23e8bb-0bcb-4c74-a511-18f9581aeb1e/
+    │   ├── 549fef21-f6ad-423a-8c4c-6f1ee4abb526/
+    │   ├── 5aa2fc30-566f-4539-915b-0dc7f3f628a3/
+    │   ├── 5b566d0c-5109-46fd-a360-2f6db33f7a71/
+    │   ├── 68fe80b1-9388-4133-9a5e-b54abd010792/
+    │   ├── 69e02b15-82d5-4b5b-a33a-1aca392ff9a4/
+    │   ├── 6a983560-8c99-40d5-a660-73e274d31824/
+    │   ├── 6b282597-01ca-4587-bdbc-6fcbd0782e5e/
+    │   ├── 710b3709-6858-4901-915b-2161fc9866e1/
+    │   ├── 79363b49-e694-405a-90bf-2de077b991af/
+    │   ├── 889eca34-04b7-4d59-827f-68ff9e10f166/
+    │   ├── 88a54422-7ba6-4140-851b-178cef1b6243/
+    │   ├── 9242866a-9e8f-41b8-ae4a-2bf4abe264db/
+    │   ├── 9285f02f-5f2e-4b60-9f59-af316041ebbd/
+    │   ├── 962ef4c9-95d0-4624-8a02-f167b18c748e/
+    │   ├── 9b491540-db5b-40d9-bc83-75e70920be39/
+    │   ├── 9fe6ff7d-2c60-4867-845c-1507212c4784/
+    │   ├── a3d22d4c-2fd2-4c74-8fdf-fa86b9d20662/
+    │   ├── a69dd158-dadd-488a-b1dd-4d4199e7b2d2/
+    │   ├── ac6dce80-993e-4635-87f6-ba2499b6a15e/
+    │   ├── ae78cc45-116a-41ed-a6f7-7b5f552b9285/
+    │   ├── b15bb739-b0e4-467c-9471-453081e88f1f/
+    │   ├── b350c487-a72f-4adf-8b6c-09ffdf0bb52e/
+    │   ├── c0e62992-b3eb-49de-aa6c-2c271338b72a/
+    │   ├── c46bcb00-c3fc-4048-9c22-cba3b28adb06/
+    │   ├── c8d4b69d-700b-4610-b616-c8fe5de74f50/
+    │   ├── cf3c406d-49a0-4d49-90ed-617f90ea2614/
+    │   ├── d3ae961e-35e5-4f81-83bc-cfd2c145db8e/
+    │   ├── d89c6f7c-3301-43d3-8053-812887c06b99/
+    │   ├── dcdf1e0d-5135-4131-8f9d-666f7520a116/
+    │   ├── e232fb51-2428-4a6e-855d-129513384ee8/
+    │   ├── e39c4712-3632-4e9b-a25a-10cc74b014d9/
+    │   ├── ecdb9a80-4138-4b7f-ae91-f1df40f0a6a6/
+    │   ├── f76f18f2-25a6-401e-96f5-4976af64eb1e/
+    │   └── f994cc86-821e-40d6-9e26-02b21c66152d/
+    ├── cdac5ba7-4ae4-4b5c-a72c-8e1b0e0708aa/
+    │   └── 8f014c3f-db2b-4bd5-9699-28e0cbaeed26/
+    └── results/
+        ├── 00ffad3f-8d14-4ab7-a870-05386efdf28e/
+        ├── 020f6f1f-2c0d-48d4-878f-51a60c44df8e/
+        │   └── 020f6f1f-2c0d-48d4-878f-51a60c44df8e.xlsx  ✗
+        ├── 0db68c53-e5ae-4776-ad14-d5567ea4b89e/
+        │   └── 0db68c53-e5ae-4776-ad14-d5567ea4b89e.xlsx  ✗
+        ├── 12174ee9-b955-4ec1-8c02-b8b709bf7010/
+        │   └── 12174ee9-b955-4ec1-8c02-b8b709bf7010.xlsx  ✗
+        ├── 1477e775-032b-4752-a40b-88ba990749c9/
+        │   └── result.xlsx  ✗
+        ├── 2c42db17-851b-4d51-9ad7-b63a5f70c643/
+        │   └── 2c42db17-851b-4d51-9ad7-b63a5f70c643.xlsx  ✗
+        ├── 2e03e21c-ebd8-4042-8c6c-7e38acd062ab/
+        │   └── debug/
+        │       └── page1.png  ✗
+        ├── 2ed4c3e8-4de4-4449-95ab-9fe7aa5380d0/
+        ├── 397b442c-8e08-4d73-9a0a-f27a848c3828/
+        ├── 3b23e8bb-0bcb-4c74-a511-18f9581aeb1e/
+        ├── 549fef21-f6ad-423a-8c4c-6f1ee4abb526/
+        ├── 5aa2fc30-566f-4539-915b-0dc7f3f628a3/
+        │   └── result.xlsx  ✗
+        ├── 5b566d0c-5109-46fd-a360-2f6db33f7a71/
+        │   └── 5b566d0c-5109-46fd-a360-2f6db33f7a71.xlsx  ✗
+        ├── 68fe80b1-9388-4133-9a5e-b54abd010792/
+        ├── 69e02b15-82d5-4b5b-a33a-1aca392ff9a4/
+        ├── 6a983560-8c99-40d5-a660-73e274d31824/
+        │   └── 6a983560-8c99-40d5-a660-73e274d31824.xlsx  ✗
+        ├── 6b282597-01ca-4587-bdbc-6fcbd0782e5e/
+        │   └── result.xlsx  ✗
+        ├── 710b3709-6858-4901-915b-2161fc9866e1/
+        ├── 79363b49-e694-405a-90bf-2de077b991af/
+        ├── 889eca34-04b7-4d59-827f-68ff9e10f166/
+        │   └── 889eca34-04b7-4d59-827f-68ff9e10f166.xlsx  ✗
+        ├── 88a54422-7ba6-4140-851b-178cef1b6243/
+        ├── 9242866a-9e8f-41b8-ae4a-2bf4abe264db/
+        │   └── debug/
+        │       └── page1.png  ✗
+        ├── 9285f02f-5f2e-4b60-9f59-af316041ebbd/
+        │   └── 9285f02f-5f2e-4b60-9f59-af316041ebbd.xlsx  ✗
+        ├── 962ef4c9-95d0-4624-8a02-f167b18c748e/
+        ├── 9b491540-db5b-40d9-bc83-75e70920be39/
+        ├── 9fe6ff7d-2c60-4867-845c-1507212c4784/
+        ├── a3d22d4c-2fd2-4c74-8fdf-fa86b9d20662/
+        ├── a69dd158-dadd-488a-b1dd-4d4199e7b2d2/
+        ├── ac6dce80-993e-4635-87f6-ba2499b6a15e/
+        │   └── extracted_tables.xlsx  ✗
+        ├── ae78cc45-116a-41ed-a6f7-7b5f552b9285/
+        ├── b15bb739-b0e4-467c-9471-453081e88f1f/
+        ├── b350c487-a72f-4adf-8b6c-09ffdf0bb52e/
+        │   └── debug/
+        │       └── page1.png  ✗
+        ├── c0e62992-b3eb-49de-aa6c-2c271338b72a/
+        ├── c46bcb00-c3fc-4048-9c22-cba3b28adb06/
+        │   └── extracted_tables.xlsx  ✗
+        ├── c8d4b69d-700b-4610-b616-c8fe5de74f50/
+        │   └── result.xlsx  ✗
+        ├── cf3c406d-49a0-4d49-90ed-617f90ea2614/
+        │   └── cf3c406d-49a0-4d49-90ed-617f90ea2614.xlsx  ✗
+        ├── d3ae961e-35e5-4f81-83bc-cfd2c145db8e/
+        │   └── extracted_tables.xlsx  ✗
+        ├── d89c6f7c-3301-43d3-8053-812887c06b99/
+        │   └── extracted_tables.xlsx  ✗
+        ├── e232fb51-2428-4a6e-855d-129513384ee8/
+        │   └── e232fb51-2428-4a6e-855d-129513384ee8.xlsx  ✗
+        ├── e39c4712-3632-4e9b-a25a-10cc74b014d9/
+        │   └── extracted_tables.xlsx  ✗
+        ├── ecdb9a80-4138-4b7f-ae91-f1df40f0a6a6/
+        │   └── extracted_tables.xlsx  ✗
+        ├── f76f18f2-25a6-401e-96f5-4976af64eb1e/
+        │   └── extracted_tables.xlsx  ✗
+        └── f994cc86-821e-40d6-9e26-02b21c66152d/
+            └── f994cc86-821e-40d6-9e26-02b21c66152d.xlsx  ✗
+
+==============
+.env.example
+---------------------------------------------------------
+# Docxy Environment Variables
+
+# Project settings
+PROJECT_NAME=Docxy
+API_V1_STR=/api/v1
+SECRET_KEY=change-me-in-production-use-a-secure-random-string
+
+# PostgreSQL (use 'db' as server when running inside Docker)
+POSTGRES_SERVER=db
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=pdf_extractor
+
+# Redis (use 'redis' as host when running inside Docker)
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_PASSWORD=redis_password
+
+# S3 / Minio (use 'minio' as host when running inside Docker)
+S3_ENDPOINT=http://minio:9000
+S3_ACCESS_KEY=minioadmin
+S3_SECRET_KEY=minioadmin
+S3_BUCKET=documents
+
+# LiteLLM / LLM Provider (use 'llm' as host when running inside Docker)
+LITELLM_BASE_URL=http://llm:11434
+LITELLM_API_KEY=ollama
+LITELLM_MODEL_NAME=ollama/llama3
+
+# Rate Limiting
+INBOUND_RATE_LIMIT=100/hour
+
+# Admin Authentication
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin
+
+---------------------------------------------------------
+.gitignore
+---------------------------------------------------------
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Env
+.env
+
+# Docker
+postgres_data/
+minio_data/
+ollama_data/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+*.pdf
+outputs/
+downloads/
+
+---------------------------------------------------------
+.pytest_cache\.gitignore
+---------------------------------------------------------
+# Created by pytest automatically.
+*
+
+---------------------------------------------------------
+.pytest_cache\CACHEDIR.TAG
+---------------------------------------------------------
+Signature: 8a477f597d28d172789f06886806bc55
+# This file is a cache directory tag created by pytest.
+# For information about cache directory tags, see:
+#	https://bford.info/cachedir/spec.html
+
+---------------------------------------------------------
+.pytest_cache\README.md
+---------------------------------------------------------
+# pytest cache directory #
+
+This directory contains data from the pytest's cache plugin,
+which provides the `--lf` and `--ff` options, as well as the `cache` fixture.
+
+**Do not** commit this to version control.
+
+See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more information.
+
+---------------------------------------------------------
+alembic\env.py
+---------------------------------------------------------
+import asyncio
+from logging.config import fileConfig
+from sqlalchemy import pool
+from sqlalchemy.ext.asyncio import async_engine_from_config
+from alembic import context
+
+# this is the Alembic Config object, which provides
+# access to the values within the .ini file in use.
+config = context.config
+
+# Interpret the config file for Python logging.
+# This line sets up loggers basically.
+if config.config_file_name is not None:
+    fileConfig(config.config_file_name)
+
+# add your model's MetaData object here
+# for 'autogenerate' support
+from app.db.models.base import Base
+from app.db.models.models import User, APIKey, Job, Document, Table, UsageLog, AuditLog
+target_metadata = Base.metadata
+
+# other values from the config, defined by the needs of env.py,
+# can be acquired:
+# my_important_option = config.get_main_option("my_important_option")
+# ... etc.
+
+from app.core.config import settings
+
+def run_migrations_offline() -> None:
+    """Run migrations in 'offline' mode.
+
+    This configures the context with just a URL
+    and not an Engine, though an Engine is acceptable
+    here as well.  By skipping the Engine creation
+    we don't even need a DBAPI to be available.
+
+    Calls to context.execute() here emit the given string to the
+    script output.
+
+    """
+    url = settings.DATABASE_URL
+    context.configure(
+        url=url,
+        target_metadata=target_metadata,
+        literal_binds=True,
+        dialect_opts={"paramstyle": "named"},
+    )
+
+    with context.begin_transaction():
+        context.run_migrations()
+
+
+def do_run_migrations(connection) -> None:
+    context.configure(connection=connection, target_metadata=target_metadata)
+
+    with context.begin_transaction():
+        context.run_migrations()
+
+
+async def run_migrations_online() -> None:
+    """Run migrations in 'online' mode.
+
+    In this scenario we need to create an Engine
+    and associate a connection with the context.
+
+    """
+    configuration = config.get_section(config.config_ini_section)
+    configuration["sqlalchemy.url"] = settings.DATABASE_URL
+    connectable = async_engine_from_config(
+        configuration,
+        prefix="sqlalchemy.",
+        poolclass=pool.NullPool,
+    )
+
+    async with connectable.connect() as connection:
+        await connection.run_sync(do_run_migrations)
+
+    await connectable.dispose()
+
+
+if context.is_offline_mode():
+    run_migrations_offline()
+else:
+    asyncio.run(run_migrations_online())
+
+---------------------------------------------------------
+alembic\README
+---------------------------------------------------------
+Generic single-database configuration.
+---------------------------------------------------------
+alembic\script.py.mako
+---------------------------------------------------------
+"""${message}
+
+Revision ID: ${up_revision}
+Revises: ${down_revision | comma,n}
+Create Date: ${create_date}
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+${imports if imports else ""}
+
+# revision identifiers, used by Alembic.
+revision: str = ${repr(up_revision)}
+down_revision: Union[str, Sequence[str], None] = ${repr(down_revision)}
+branch_labels: Union[str, Sequence[str], None] = ${repr(branch_labels)}
+depends_on: Union[str, Sequence[str], None] = ${repr(depends_on)}
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    ${upgrades if upgrades else "pass"}
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    ${downgrades if downgrades else "pass"}
+
+---------------------------------------------------------
+alembic\versions\4a25a4f7ac48_add_full_text_to_jobs.py
+---------------------------------------------------------
+"""add full_text to jobs
+
+Revision ID: 4a25a4f7ac48
+Revises: 2a3b4c5d6e7f
+Create Date: 2026-03-19 13:54:30.164156
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '4a25a4f7ac48'
+down_revision: Union[str, Sequence[str], None] = '2a3b4c5d6e7f'
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    pass
+    # ### end Alembic commands ###
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    pass
+    # ### end Alembic commands ###
+
+---------------------------------------------------------
+alembic\versions\889cb2cfdb5b_initial_migration_sqlite.py
+---------------------------------------------------------
+"""Initial_migration_sqlite
+
+Revision ID: 889cb2cfdb5b
+Revises: 
+Create Date: 2026-03-18 01:25:55.739542
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '889cb2cfdb5b'
+down_revision: Union[str, Sequence[str], None] = None
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.create_table('users',
+    sa.Column('email', sa.String(), nullable=False),
+    sa.Column('organization', sa.String(), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.Column('role', sa.Enum('USER', 'ADMIN', name='userrole'), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
+    op.create_table('api_keys',
+    sa.Column('user_id', sa.Uuid(), nullable=False),
+    sa.Column('key_hash', sa.String(), nullable=False),
+    sa.Column('key_prefix', sa.String(length=10), nullable=False),
+    sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.Column('rate_limit_tier', sa.String(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_api_keys_key_hash'), 'api_keys', ['key_hash'], unique=True)
+    op.create_table('audit_logs',
+    sa.Column('user_id', sa.Uuid(), nullable=True),
+    sa.Column('action', sa.String(), nullable=True),
+    sa.Column('ip_address', sa.String(), nullable=True),
+    sa.Column('status_code', sa.Integer(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('jobs',
+    sa.Column('user_id', sa.Uuid(), nullable=False),
+    sa.Column('status', sa.Enum('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED', name='jobstatus'), nullable=True),
+    sa.Column('input_file_url', sa.String(), nullable=True),
+    sa.Column('output_file_url', sa.String(), nullable=True),   # <-- added
+    sa.Column('progress_percent', sa.Integer(), nullable=True),
+    sa.Column('error_message', sa.String(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('documents',
+    sa.Column('job_id', sa.Uuid(), nullable=False),
+    sa.Column('page_number', sa.Integer(), nullable=True),
+    sa.Column('image_crop_url', sa.String(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.ForeignKeyConstraint(['job_id'], ['jobs.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('usage_logs',
+    sa.Column('api_key_id', sa.Uuid(), nullable=False),
+    sa.Column('endpoint', sa.String(), nullable=True),
+    sa.Column('tokens_consumed', sa.Integer(), nullable=True),
+    sa.Column('cost_estimate', sa.Float(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.ForeignKeyConstraint(['api_key_id'], ['api_keys.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('tables',
+    sa.Column('document_id', sa.Uuid(), nullable=False),
+    sa.Column('structure_json', sa.JSON(), nullable=True),
+    sa.Column('cleaned_data', sa.JSON(), nullable=True),
+    sa.Column('confidence_score', sa.Float(), nullable=True),
+    sa.Column('requires_review', sa.Boolean(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.ForeignKeyConstraint(['document_id'], ['documents.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    # ### end Alembic commands ###
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.drop_table('tables')
+    op.drop_table('usage_logs')
+    op.drop_table('documents')
+    op.drop_table('jobs')
+    op.drop_table('audit_logs')
+    op.drop_index(op.f('ix_api_keys_key_hash'), table_name='api_keys')
+    op.drop_table('api_keys')
+    op.drop_index(op.f('ix_users_email'), table_name='users')
+    op.drop_table('users')
+    # ### end Alembic commands ###
+---------------------------------------------------------
+alembic\versions\initial_migration_sqlite.py
+---------------------------------------------------------
+"""add full_text to jobs
+
+Revision ID: 2a3b4c5d6e7f
+Revises: 889cb2cfdb5b
+Create Date: 2026-03-19 10:00:00.000000
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '2a3b4c5d6e7f'
+down_revision: Union[str, Sequence[str], None] = '889cb2cfdb5b'
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Add full_text column to jobs table."""
+    op.add_column('jobs', sa.Column('full_text', sa.Text(), nullable=True))
+
+
+def downgrade() -> None:
+    """Remove full_text column from jobs table."""
+    op.drop_column('jobs', 'full_text')
+---------------------------------------------------------
+alembic.ini
+---------------------------------------------------------
+# A generic, single database configuration.
+
+[alembic]
+# path to migration scripts.
+# this is typically a path given in POSIX (e.g. forward slashes)
+# format, relative to the token %(here)s which refers to the location of this
+# ini file
+script_location = %(here)s/alembic
+
+# template used to generate migration file names; The default value is %%(rev)s_%%(slug)s
+# Uncomment the line below if you want the files to be prepended with date and time
+# see https://alembic.sqlalchemy.org/en/latest/tutorial.html#editing-the-ini-file
+# for all available tokens
+# file_template = %%(year)d_%%(month).2d_%%(day).2d_%%(hour).2d%%(minute).2d-%%(rev)s_%%(slug)s
+# Or organize into date-based subdirectories (requires recursive_version_locations = true)
+# file_template = %%(year)d/%%(month).2d/%%(day).2d_%%(hour).2d%%(minute).2d_%%(second).2d_%%(rev)s_%%(slug)s
+
+# sys.path path, will be prepended to sys.path if present.
+# defaults to the current working directory.  for multiple paths, the path separator
+# is defined by "path_separator" below.
+prepend_sys_path = .
+
+
+# timezone to use when rendering the date within the migration file
+# as well as the filename.
+# If specified, requires the tzdata library which can be installed by adding
+# `alembic[tz]` to the pip requirements.
+# string value is passed to ZoneInfo()
+# leave blank for localtime
+# timezone =
+
+# max length of characters to apply to the "slug" field
+# truncate_slug_length = 40
+
+# set to 'true' to run the environment during
+# the 'revision' command, regardless of autogenerate
+# revision_environment = false
+
+# set to 'true' to allow .pyc and .pyo files without
+# a source .py file to be detected as revisions in the
+# versions/ directory
+# sourceless = false
+
+# version location specification; This defaults
+# to <script_location>/versions.  When using multiple version
+# directories, initial revisions must be specified with --version-path.
+# The path separator used here should be the separator specified by "path_separator"
+# below.
+# version_locations = %(here)s/bar:%(here)s/bat:%(here)s/alembic/versions
+
+# path_separator; This indicates what character is used to split lists of file
+# paths, including version_locations and prepend_sys_path within configparser
+# files such as alembic.ini.
+# The default rendered in new alembic.ini files is "os", which uses os.pathsep
+# to provide os-dependent path splitting.
+#
+# Note that in order to support legacy alembic.ini files, this default does NOT
+# take place if path_separator is not present in alembic.ini.  If this
+# option is omitted entirely, fallback logic is as follows:
+#
+# 1. Parsing of the version_locations option falls back to using the legacy
+#    "version_path_separator" key, which if absent then falls back to the legacy
+#    behavior of splitting on spaces and/or commas.
+# 2. Parsing of the prepend_sys_path option falls back to the legacy
+#    behavior of splitting on spaces, commas, or colons.
+#
+# Valid values for path_separator are:
+#
+# path_separator = :
+# path_separator = ;
+# path_separator = space
+# path_separator = newline
+#
+# Use os.pathsep. Default configuration used for new projects.
+path_separator = os
+
+# set to 'true' to search source files recursively
+# in each "version_locations" directory
+# new in Alembic version 1.10
+# recursive_version_locations = false
+
+# the output encoding used when revision files
+# are written from script.py.mako
+# output_encoding = utf-8
+
+# database URL.  This is consumed by the user-maintained env.py script only.
+# other means of configuring database URLs may be customized within the env.py
+# file.
+sqlalchemy.url = driver://user:pass@localhost/dbname
+
+
+[post_write_hooks]
+# post_write_hooks defines scripts or Python functions that are run
+# on newly generated revision scripts.  See the documentation for further
+# detail and examples
+
+# format using "black" - use the console_scripts runner, against the "black" entrypoint
+# hooks = black
+# black.type = console_scripts
+# black.entrypoint = black
+# black.options = -l 79 REVISION_SCRIPT_FILENAME
+
+# lint with attempts to fix using "ruff" - use the module runner, against the "ruff" module
+# hooks = ruff
+# ruff.type = module
+# ruff.module = ruff
+# ruff.options = check --fix REVISION_SCRIPT_FILENAME
+
+# Alternatively, use the exec runner to execute a binary found on your PATH
+# hooks = ruff
+# ruff.type = exec
+# ruff.executable = ruff
+# ruff.options = check --fix REVISION_SCRIPT_FILENAME
+
+# Logging configuration.  This is also consumed by the user-maintained
+# env.py script only.
+[loggers]
+keys = root,sqlalchemy,alembic
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = WARNING
+handlers = console
+qualname =
+
+[logger_sqlalchemy]
+level = WARNING
+handlers =
+qualname = sqlalchemy.engine
+
+[logger_alembic]
+level = INFO
+handlers =
+qualname = alembic
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(levelname)-5.5s [%(name)s] %(message)s
+datefmt = %H:%M:%S
+
+---------------------------------------------------------
+app\api\v1\api.py
+---------------------------------------------------------
+from fastapi import APIRouter
+from app.api.v1.endpoints import jobs, health, admin
+
+api_router = APIRouter()
+api_router.include_router(jobs.router, prefix="/jobs", tags=["jobs"])
+api_router.include_router(health.router, prefix="/health", tags=["health"])
+api_router.include_router(admin.router, prefix="/admin", tags=["admin"])
+
+---------------------------------------------------------
+app\api\v1\endpoints\admin.py
+---------------------------------------------------------
+from fastapi import APIRouter, Depends, HTTPException, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+import uuid
+import secrets
+from app.db.session import get_db
+from app.db.models.models import User, APIKey, UserRole
+from app.core.security import hash_api_key
+from app.core.config import settings
+
+router = APIRouter()
+templates = Jinja2Templates(directory="app/templates")
+
+@router.get("", response_class=HTMLResponse)
+async def admin_dashboard(request: Request, db: AsyncSession = Depends(get_db)):
+    # Very simple auth check for demo - in production use session/cookie
+    # This is a placeholder for actual admin auth
+    result = await db.execute(select(User))
+    users = result.scalars().all()
+    return templates.TemplateResponse("admin/dashboard.html", {"request": request, "users": users})
+
+@router.post("/users")
+async def create_user_and_key(
+    email: str = Form(...),
+    organization: str = Form(None),
+    db: AsyncSession = Depends(get_db)
+):
+    # Check if user exists
+    result = await db.execute(select(User).where(User.email == email))
+    user = result.scalar_one_or_none()
+    
+    if not user:
+        user = User(email=email, organization=organization)
+        db.add(user)
+        await db.commit()
+        await db.refresh(user)
+    
+    # Generate API Key
+    plain_key = f"sk_{secrets.token_urlsafe(32)}"
+    key_prefix = plain_key[:8]
+    key_hash = hash_api_key(plain_key)
+    
+    api_key = APIKey(
+        user_id=user.id,
+        key_hash=key_hash,
+        key_prefix=key_prefix
+    )
+    db.add(api_key)
+    await db.commit()
+    
+    return {
+        "user_id": user.id,
+        "api_key": plain_key,
+        "note": "Copy this key now, it won't be shown again."
+    }
+
+---------------------------------------------------------
+app\api\v1\endpoints\health.py
+---------------------------------------------------------
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from app.db.session import get_db
+from app.core.config import settings
+import redis.asyncio as redis
+import aioboto3
+
+router = APIRouter()
+
+@router.get("")
+async def health_check(db: AsyncSession = Depends(get_db)):
+    # Check DB
+    try:
+        await db.execute(select(1))
+        db_status = "ok"
+    except Exception as e:
+        db_status = f"error: {str(e)}"
+
+    # Check Redis
+    if settings.USE_REDIS:
+        try:
+            redis_client = redis.from_url(settings.REDIS_URL)
+            await redis_client.ping()
+            redis_status = "ok"
+        except Exception as e:
+            redis_status = f"error: {str(e)}"
+    else:
+        redis_status = "disabled"
+
+    # Check S3
+    if settings.STORAGE_TYPE == "s3":
+        try:
+            session = aioboto3.Session()
+            async with session.client(
+                "s3",
+                endpoint_url=settings.S3_ENDPOINT,
+                aws_access_key_id=settings.S3_ACCESS_KEY,
+                aws_secret_access_key=settings.S3_SECRET_KEY,
+            ) as s3:
+                await s3.list_buckets()
+                s3_status = "ok"
+        except Exception as e:
+            s3_status = f"error: {str(e)}"
+    else:
+        s3_status = f"local ({settings.UPLOAD_DIR})"
+
+    return {
+        "status": "ok",
+        "database": db_status,
+        "redis": redis_status,
+        "s3": s3_status
+    }
+
+---------------------------------------------------------
+app\api\v1\endpoints\jobs.py
+---------------------------------------------------------
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, BackgroundTasks
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+import uuid
+from app.db.session import get_db
+from app.db.models.models import Job, User, JobStatus
+from app.core.security import get_current_user
+from app.core.config import settings
+from app.services.storage_service import storage_service
+from app.workers.tasks import process_pdf_job, process_pdf_job_sync
+
+from fastapi.responses import FileResponse
+import os
+
+router = APIRouter()
+
+
+@router.get("/download_local/{path:path}")
+async def download_local(path: str):
+    full_path = os.path.join(settings.UPLOAD_DIR, path)
+    if not os.path.exists(full_path):
+        raise HTTPException(status_code=404, detail="File not found")
+    if os.path.isdir(full_path):
+        raise HTTPException(status_code=404, detail="Path is a directory, not a file")
+    return FileResponse(full_path)
+
+
+@router.post("", status_code=201)
+async def create_job(
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(...),
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    if not file.filename.endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are supported")
+
+    job_id = uuid.uuid4()
+    file_key = f"{current_user.id}/{job_id}/{file.filename}"
+
+    await storage_service.upload_file(file, file_key)
+
+    job = Job(
+        id=job_id,
+        user_id=current_user.id,
+        input_file_url=file_key,
+        status=JobStatus.PENDING
+    )
+    db.add(job)
+    await db.commit()
+    await db.refresh(job)
+
+    if settings.USE_REDIS and settings.REDIS_URL:
+        process_pdf_job.delay(str(job.id))
+    else:
+        background_tasks.add_task(process_pdf_job_sync, str(job.id))
+
+    return {"job_id": job.id, "status": job.status}
+
+
+@router.get("/{job_id}")
+async def get_job(
+    job_id: uuid.UUID,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    result = await db.execute(
+        select(Job).where(Job.id == job_id, Job.user_id == current_user.id)
+    )
+    job = result.scalar_one_or_none()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    return {
+        "job_id": job.id,
+        "status": job.status,
+        "progress_percent": job.progress_percent,
+        "error_message": job.error_message
+    }
+
+
+@router.get("/{job_id}/download")
+async def download_job_result(
+    job_id: uuid.UUID,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    result = await db.execute(
+        select(Job).where(Job.id == job_id, Job.user_id == current_user.id)
+    )
+    job = result.scalar_one_or_none()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    if job.status != JobStatus.COMPLETED:
+        raise HTTPException(status_code=400, detail="Job is not completed yet")
+
+    if not job.output_file_url:
+        raise HTTPException(status_code=404, detail="Output file not found")
+
+    url = await storage_service.get_presigned_url(job.output_file_url)
+
+    return {
+        "download_url": url,
+        "full_text": job.full_text
+    }
+---------------------------------------------------------
+app\api\v1\endpoints\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\api\v1\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\api\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\core\celery_app.py
+---------------------------------------------------------
+from celery import Celery
+from app.core.config import settings
+
+celery_app = Celery(
+    "worker",
+    broker=settings.REDIS_URL,
+    backend=settings.REDIS_URL
+)
+
+celery_app.conf.task_routes = {
+    "app.workers.tasks.*": "main-queue"
+}
+
+celery_app.autodiscover_tasks(["app.workers"])
+
+---------------------------------------------------------
+app\core\config.py
+---------------------------------------------------------
+from typing import Optional
+from pydantic import field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    PROJECT_NAME: str = "Docxy"
+    API_V1_STR: str = "/api/v1"
+
+    # POSTGRES / SQLITE
+    POSTGRES_SERVER: str = "localhost"
+    POSTGRES_USER: str = "postgres"
+    POSTGRES_PASSWORD: str = "postgres"
+    POSTGRES_DB: str = "pdf_extractor"
+    DATABASE_URL: Optional[str] = "sqlite+aiosqlite:///./docxy.db"
+
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def assemble_db_connection(cls, v: Optional[str], info):
+        if isinstance(v, str) and v:
+            return v
+        # Build from postgres components
+        return f"postgresql+asyncpg://{info.data.get('POSTGRES_USER')}:{info.data.get('POSTGRES_PASSWORD')}@{info.data.get('POSTGRES_SERVER')}/{info.data.get('POSTGRES_DB')}"
+
+    # REDIS
+    USE_REDIS: bool = False
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
+    REDIS_PASSWORD: Optional[str] = None
+    REDIS_URL: Optional[str] = None
+
+    @field_validator("REDIS_URL", mode="before")
+    @classmethod
+    def assemble_redis_connection(cls, v: Optional[str], info):
+        if isinstance(v, str) and v:
+            return v
+        if info.data.get("USE_REDIS"):
+            password_part = f":{info.data.get('REDIS_PASSWORD')}@" if info.data.get('REDIS_PASSWORD') else ""
+            return f"redis://{password_part}{info.data.get('REDIS_HOST')}:{info.data.get('REDIS_PORT')}"
+        return None
+
+    # S3 / Minio / LOCAL
+    STORAGE_TYPE: str = "local"  # "s3" or "local"
+    UPLOAD_DIR: str = "uploads"
+    S3_ENDPOINT: str = "http://minio:9000"
+    S3_ACCESS_KEY: str = "minioadmin"
+    S3_SECRET_KEY: str = "minioadmin"
+    S3_BUCKET: str = "documents"
+
+    # LiteLLM
+    LITELLM_BASE_URL: str = "http://llm:11434"
+    LITELLM_API_KEY: str = "ollama"
+    LITELLM_MODEL_NAME: str = "ollama/llama3"
+
+    # Rate Limiting
+    INBOUND_RATE_LIMIT: str = "100/hour"
+
+    # Admin Auth
+    ADMIN_USERNAME: str = "admin"
+    ADMIN_PASSWORD: str = "admin"
+    SECRET_KEY: str = "secret-key-change-me-in-production"
+
+    # Poppler path for pdf2image (Windows)
+    POPPLER_PATH: Optional[str] = None
+
+    model_config = SettingsConfigDict(case_sensitive=True, env_file=".env")
+
+
+settings = Settings()
+---------------------------------------------------------
+app\core\init_admin.py
+---------------------------------------------------------
+import asyncio
+import secrets
+from sqlalchemy.future import select
+from app.db.session import AsyncSessionLocal
+from app.db.models.models import User, APIKey, UserRole
+from app.core.security import hash_api_key
+from app.core.config import settings
+
+async def init_admin():
+    async with AsyncSessionLocal() as db:
+        # Check if admin user exists
+        result = await db.execute(select(User).where(User.email == settings.ADMIN_USERNAME))
+        admin = result.scalar_one_or_none()
+        
+        if not admin:
+            print(f"Creating admin user: {settings.ADMIN_USERNAME}")
+            admin = User(
+                email=settings.ADMIN_USERNAME,
+                organization="Admin Org",
+                role=UserRole.ADMIN,
+                is_active=True
+            )
+            db.add(admin)
+            await db.commit()
+            await db.refresh(admin)
+            
+            # Generate initial API Key for admin
+            plain_key = f"sk_{secrets.token_urlsafe(32)}"
+            key_hash = hash_api_key(plain_key)
+            api_key = APIKey(
+                user_id=admin.id,
+                key_hash=key_hash,
+                key_prefix=plain_key[:8]
+            )
+            db.add(api_key)
+            await db.commit()
+            print(f"Admin API Key generated: {plain_key}")
+            print("KEEP THIS KEY SECURE!")
+        else:
+            print("Admin user already exists.")
+
+if __name__ == "__main__":
+    asyncio.run(init_admin())
+
+---------------------------------------------------------
+app\core\limiter.py
+---------------------------------------------------------
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from app.core.config import settings
+import logging
+
+logger = logging.getLogger(__name__)
+
+# Fallback to memory if Redis is unavailable
+storage_uri = settings.REDIS_URL or "memory://"
+
+limiter = Limiter(
+    key_func=get_remote_address,
+    storage_uri=storage_uri,
+    default_limits=[settings.INBOUND_RATE_LIMIT]
+)
+
+---------------------------------------------------------
+app\core\security.py
+---------------------------------------------------------
+import hashlib
+import logging
+from fastapi import Security, HTTPException, Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from sqlalchemy.future import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.db.session import get_db
+from app.db.models.models import APIKey, User
+from app.core.config import settings
+import redis.asyncio as redis
+
+logger = logging.getLogger(__name__)
+
+# Redis connection for caching auth with fallback
+redis_client = None
+if settings.USE_REDIS and settings.REDIS_URL:
+    try:
+        redis_client = redis.from_url(settings.REDIS_URL, decode_responses=True)
+    except Exception as e:
+        logger.warning(f"Redis requested but not available: {e}. Auth caching will be disabled.")
+
+security = HTTPBearer()
+
+def hash_api_key(api_key: str) -> str:
+    return hashlib.sha256(api_key.encode()).hexdigest()
+
+async def get_current_user(
+    auth: HTTPAuthorizationCredentials = Security(security),
+    db: AsyncSession = Depends(get_db)
+) -> User:
+    api_key = auth.credentials
+    key_hash = hash_api_key(api_key)
+    
+    # Check Redis cache first if available
+    cache_key = f"auth:{key_hash}"
+    if redis_client:
+        try:
+            user_id = await redis_client.get(cache_key)
+            if user_id:
+                result = await db.execute(select(User).where(User.id == user_id))
+                user = result.scalar_one_or_none()
+                if user and user.is_active:
+                    return user
+        except Exception:
+            pass
+
+    # If cache miss or Redis unavailable, check DB
+    result = await db.execute(
+        select(APIKey).where(APIKey.key_hash == key_hash, APIKey.is_active == True)
+    )
+    db_api_key = result.scalar_one_or_none()
+    
+    if not db_api_key:
+        raise HTTPException(status_code=401, detail="Invalid API Key")
+    
+    result = await db.execute(select(User).where(User.id == db_api_key.user_id))
+    user = result.scalar_one_or_none()
+    
+    if not user or not user.is_active:
+        raise HTTPException(status_code=401, detail="User is inactive")
+    
+    # Cache result if Redis available
+    if redis_client:
+        try:
+            await redis_client.setex(cache_key, 300, str(user.id))
+        except Exception:
+            pass
+    
+    return user
+
+---------------------------------------------------------
+app\core\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\db\models\base.py
+---------------------------------------------------------
+import uuid
+from sqlalchemy import Column, DateTime, func, Uuid
+from sqlalchemy.orm import DeclarativeBase, declared_attr
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+class TimestampMixin:
+    @declared_attr
+    def id(cls):
+        # Use generic Uuid which works across backends (as CHAR(32) or native UUID)
+        return Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
+
+    @declared_attr
+    def created_at(cls):
+        return Column(DateTime(timezone=True), server_default=func.now())
+
+    @declared_attr
+    def updated_at(cls):
+        return Column(DateTime(timezone=True), onupdate=func.now(), server_default=func.now())
+
+---------------------------------------------------------
+app\db\models\models.py
+---------------------------------------------------------
+import enum
+from sqlalchemy import Column, String, Boolean, ForeignKey, Integer, JSON, Enum as SQLEnum, Float, Text
+from sqlalchemy.orm import relationship
+from .base import Base, TimestampMixin
+
+
+class UserRole(str, enum.Enum):
+    USER = "user"
+    ADMIN = "admin"
+
+
+class JobStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    PROCESSING = "PROCESSING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+
+
+class User(Base, TimestampMixin):
+    __tablename__ = "users"
+
+    email = Column(String, unique=True, index=True, nullable=False)
+    organization = Column(String)
+    is_active = Column(Boolean, default=True)
+    role = Column(SQLEnum(UserRole), default=UserRole.USER)
+
+    api_keys = relationship("APIKey", back_populates="user", cascade="all, delete-orphan")
+    jobs = relationship("Job", back_populates="user")
+
+
+class APIKey(Base, TimestampMixin):
+    __tablename__ = "api_keys"
+
+    user_id = Column(ForeignKey("users.id"), nullable=False)
+    key_hash = Column(String, unique=True, index=True, nullable=False)
+    key_prefix = Column(String(10), nullable=False)
+    is_active = Column(Boolean, default=True)
+    rate_limit_tier = Column(String, default="standard")
+
+    user = relationship("User", back_populates="api_keys")
+
+
+class Job(Base, TimestampMixin):
+    __tablename__ = "jobs"
+
+    user_id = Column(ForeignKey("users.id"), nullable=False)
+    status = Column(SQLEnum(JobStatus), default=JobStatus.PENDING)
+    input_file_url = Column(String)
+    output_file_url = Column(String)
+    progress_percent = Column(Integer, default=0)
+    error_message = Column(String)
+    full_text = Column(Text, nullable=True)  # New column for extracted text with placeholders
+
+    user = relationship("User", back_populates="jobs")
+    documents = relationship("Document", back_populates="job", cascade="all, delete-orphan")
+
+
+class Document(Base, TimestampMixin):
+    __tablename__ = "documents"
+
+    job_id = Column(ForeignKey("jobs.id"), nullable=False)
+    page_number = Column(Integer)
+    image_crop_url = Column(String)
+
+    job = relationship("Job", back_populates="documents")
+    tables = relationship("Table", back_populates="document", cascade="all, delete-orphan")
+
+
+class Table(Base, TimestampMixin):
+    __tablename__ = "tables"
+
+    document_id = Column(ForeignKey("documents.id"), nullable=False)
+    structure_json = Column(JSON)
+    cleaned_data = Column(JSON)
+    confidence_score = Column(Float)
+    requires_review = Column(Boolean, default=False)
+
+    document = relationship("Document", back_populates="tables")
+
+
+class UsageLog(Base, TimestampMixin):
+    __tablename__ = "usage_logs"
+
+    api_key_id = Column(ForeignKey("api_keys.id"), nullable=False)
+    endpoint = Column(String)
+    tokens_consumed = Column(Integer, default=0)
+    cost_estimate = Column(Float, default=0.0)
+
+
+class AuditLog(Base, TimestampMixin):
+    __tablename__ = "audit_logs"
+
+    user_id = Column(ForeignKey("users.id"), nullable=True)
+    action = Column(String)
+    ip_address = Column(String)
+    status_code = Column(Integer)
+---------------------------------------------------------
+app\db\models\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\db\session.py
+---------------------------------------------------------
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+from app.core.config import settings
+
+engine = create_async_engine(
+    settings.DATABASE_URL,
+    echo=False,
+    future=True,
+    pool_size=20,
+    max_overflow=10,
+)
+
+AsyncSessionLocal = async_sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+    autoflush=False,
+)
+
+
+async def get_db():
+    async with AsyncSessionLocal() as session:
+        yield session
+
+---------------------------------------------------------
+app\db\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\main.py
+---------------------------------------------------------
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+import time
+import uuid
+import structlog
+from app.api.v1.api import api_router
+from app.core.config import settings
+from app.core.limiter import limiter
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+
+from fastapi.responses import JSONResponse
+
+# Configure structlog
+structlog.configure(
+    processors=[
+        structlog.processors.TimeStamper(fmt="iso"),
+        structlog.processors.JSONRenderer(),
+    ],
+    context_class=dict,
+    logger_factory=structlog.PrintLoggerFactory(),
+)
+
+logger = structlog.get_logger()
+
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+)
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    logger.error("unhandled_exception", error=str(exc), path=request.url.path)
+    return JSONResponse(
+        status_code=500,
+        content={
+            "detail": "Internal Server Error",
+            "code": "INTERNAL_SERVER_ERROR"
+        }
+    )
+
+@app.exception_handler(RateLimitExceeded)
+async def custom_rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded):
+    return JSONResponse(
+        status_code=429,
+        content={
+            "detail": "Rate limit exceeded",
+            "code": "RATE_LIMIT_EXCEEDED"
+        }
+    )
+
+# Rate limiting
+app.state.limiter = limiter
+# app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    correlation_id = request.headers.get("X-Correlation-ID", str(uuid.uuid4()))
+    structlog.contextvars.clear_contextvars()
+    structlog.contextvars.bind_contextvars(correlation_id=correlation_id)
+    
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    response.headers["X-Process-Time"] = str(process_time)
+    response.headers["X-Correlation-ID"] = correlation_id
+    
+    logger.info(
+        "request_processed",
+        path=request.url.path,
+        method=request.method,
+        process_time=process_time,
+        status_code=response.status_code
+    )
+    return response
+
+app.include_router(api_router, prefix=settings.API_V1_STR)
+
+@app.get("/")
+async def root():
+    return {"message": "Welcome to Docxy API"}
+
+---------------------------------------------------------
+app\schemas\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\services\extraction_service.py
+---------------------------------------------------------
+import os
+import logging
+import pandas as pd
+import camelot
+import pdfplumber
+from app.core.config import settings
+from typing import List, Dict, Tuple
+
+logger = logging.getLogger(__name__)
+
+
+def get_env_str(name, default):
+    value = os.getenv(name, default)
+    if value is None:
+        return default
+    value = value.strip().strip('"').strip("'")
+    return value
+
+
+def get_env_bool(name, default):
+    value = get_env_str(name, str(default)).lower()
+    if value in ("true", "1", "yes"):
+        return True
+    elif value in ("false", "0", "no"):
+        return False
+    else:
+        return default
+
+
+def get_env_int(name, default):
+    value = get_env_str(name, str(default))
+    try:
+        return int(value)
+    except ValueError:
+        logger.warning(f"Invalid integer for {name}: {value}, using default {default}")
+        return default
+
+
+DEBUG = get_env_bool("DEBUG", False)
+USE_PDFPLUMBER_FALLBACK = get_env_bool("USE_PDFPLUMBER_FALLBACK", True)
+PAGES = get_env_str("PAGES", "all")  # for Camelot
+
+
+def extract_tables_with_camelot(pdf_path: str) -> Tuple[List[pd.DataFrame], List[Dict]]:
+    """
+    Extract tables using Camelot. Returns (list of DataFrames, list of table metadata).
+    Table metadata: {'page': int, 'bbox': [x1,y1,x2,y2]} in PDF units (bottom-left origin)
+    """
+    tables_df = []
+    tables_meta = []
+    for flavor in ["lattice", "stream"]:
+        try:
+            logger.info(f"Trying Camelot flavor: {flavor}")
+            extracted = camelot.read_pdf(
+                pdf_path,
+                pages=PAGES,
+                flavor=flavor,
+                suppress_stdout=not DEBUG
+            )
+            if len(extracted) > 0:
+                for table in extracted:
+                    tables_df.append(table.df)
+                    tables_meta.append({
+                        'page': int(table.page),
+                        'bbox': table._bbox  # [x1, y1, x2, y2] bottom-left origin
+                    })
+                logger.info(f"Camelot ({flavor}) found {len(tables_df)} tables")
+                break
+        except Exception as e:
+            logger.warning(f"Camelot ({flavor}) failed: {e}")
+    return tables_df, tables_meta
+
+
+def extract_tables_with_pdfplumber(pdf_path: str) -> Tuple[List[pd.DataFrame], List[Dict]]:
+    """
+    Extract tables using pdfplumber. Returns (list of DataFrames, list of table metadata).
+    Metadata uses pdfplumber bbox: (x0, top, x1, bottom) where top is from top of page.
+    """
+    tables_df = []
+    tables_meta = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_num, page in enumerate(pdf.pages, start=1):
+            table_settings = {
+                "vertical_strategy": "text",
+                "horizontal_strategy": "text",
+                "intersection_tolerance": 5,
+            }
+            tables = page.find_tables(table_settings=table_settings)
+            for table in tables:
+                extracted_table = page.extract_table(table_settings)
+                if extracted_table:
+                    df = pd.DataFrame(extracted_table)
+                    tables_df.append(df)
+                    tables_meta.append({
+                        'page': page_num,
+                        'bbox': table.bbox  # (x0, top, x1, bottom)
+                    })
+            if DEBUG:
+                logger.debug(f"Page {page_num}: found {len(tables)} tables via pdfplumber")
+    return tables_df, tables_meta
+
+
+def extract_text_with_placeholders(pdf_path: str, tables_meta: List[Dict]) -> str:
+    """
+    Extract full text from PDF, replacing each table region with a placeholder [Table N].
+    Tables are sorted by page and vertical position (top to bottom).
+    """
+    with pdfplumber.open(pdf_path) as pdf:
+        # Sort tables by page and top coordinate (y0)
+        # For pdfplumber bbox: (x0, top, x1, bottom) – top is from top of page.
+        tables_meta.sort(key=lambda t: (t['page'], t['bbox'][1]))
+
+        all_text = []
+        table_index = 1
+
+        for page_num, page in enumerate(pdf.pages, start=1):
+            # Get all words on page
+            words = page.extract_words(keep_blank_chars=False, use_text_flow=True, extra_attrs=['fontname'])
+            if not words:
+                continue
+
+            # Group words by line (approximate y0)
+            lines = {}
+            for w in words:
+                y0 = round(w['top'], 1)
+                if y0 not in lines:
+                    lines[y0] = []
+                lines[y0].append(w)
+
+            # Sort lines by y0 (top to bottom)
+            sorted_y = sorted(lines.keys())
+
+            # Determine which tables are on this page
+            page_tables = [t for t in tables_meta if t['page'] == page_num]
+
+            # We'll build a list of objects (line text or placeholder) with their y0
+            objects = []
+
+            # First add lines, but skip those inside tables
+            for y in sorted_y:
+                line_words = lines[y]
+                # Check if this line is inside any table
+                inside = False
+                for t in page_tables:
+                    x0, top, x1, bottom = t['bbox']
+                    if top <= y <= bottom:
+                        inside = True
+                        break
+                if not inside:
+                    # Assemble line text
+                    sorted_words = sorted(line_words, key=lambda w: w['x0'])
+                    line_text = ' '.join([w['text'] for w in sorted_words])
+                    objects.append(('line', y, line_text))
+
+            # Add placeholders for tables on this page
+            for t in page_tables:
+                objects.append(('table', t['bbox'][1], f"[Table {table_index}]"))
+                table_index += 1
+
+            # Sort objects by y0 (top to bottom)
+            objects.sort(key=lambda x: x[1])
+
+            # Build page text
+            page_lines = []
+            for obj in objects:
+                if obj[0] == 'line':
+                    page_lines.append(obj[2])
+                else:
+                    page_lines.append(obj[2])
+            if page_lines:
+                all_text.append('\n'.join(page_lines))
+
+        return '\n\n'.join(all_text)
+
+
+def extract_tables_from_pdf(pdf_path: str, output_dir: str) -> Tuple[str, str]:
+    """
+    Extract tables from PDF using Camelot (primary) and pdfplumber (fallback).
+    Also extract full text with table placeholders.
+    Returns (excel_path, full_text)
+    """
+    logger.info(f"Extracting tables from: {pdf_path}")
+
+    # Step 1: Try Camelot
+    tables_df, tables_meta = extract_tables_with_camelot(pdf_path)
+
+    # Step 2: If no tables and fallback enabled, try pdfplumber
+    if not tables_df and USE_PDFPLUMBER_FALLBACK:
+        logger.info("Camelot found no tables; trying pdfplumber fallback")
+        tables_df, tables_meta = extract_tables_with_pdfplumber(pdf_path)
+
+    # Step 3: Extract full text with placeholders (using the metadata from whichever method succeeded)
+    full_text = extract_text_with_placeholders(pdf_path, tables_meta)
+
+    if not tables_df:
+        logger.warning("No tables extracted; creating empty Excel")
+        tables_df = [pd.DataFrame({"Info": ["No tables found in PDF"]})]
+
+    # Save to Excel
+    excel_path = os.path.join(output_dir, "extracted_tables.xlsx")
+    try:
+        with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
+            for i, df in enumerate(tables_df):
+                sheet_name = f"Table_{i+1}" if i < len(tables_df)-1 else "Info"
+                df.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
+        logger.info(f"Saved extracted tables to {excel_path}")
+    except Exception as e:
+        logger.error(f"Failed to save Excel file: {e}")
+        raise
+
+    return excel_path, full_text
+---------------------------------------------------------
+app\services\llm_service.py
+---------------------------------------------------------
+import litellm
+from app.core.config import settings
+from app.core.security import redis_client
+from typing import List, Dict, Any, Optional
+
+
+class TokenBucket:
+    def __init__(self, key: str, capacity: int, refill_rate: int):
+        self.key = f"token_bucket:{key}"
+        self.capacity = capacity
+        self.refill_rate = refill_rate
+        self.redis = redis_client  # store reference to handle None
+
+    async def consume(self, tokens: int = 1) -> bool:
+        if self.redis is None:
+            # If Redis not available, allow (no rate limiting)
+            return True
+        current = await self.redis.get(self.key)
+        if current is None:
+            await self.redis.setex(self.key, 60, self.capacity - tokens)
+            return True
+        if int(current) >= tokens:
+            await self.redis.decrby(self.key, tokens)
+            return True
+        return False
+
+
+class LLMService:
+    def __init__(self):
+        litellm.api_base = settings.LITELLM_BASE_URL
+        litellm.api_key = settings.LITELLM_API_KEY
+        self.model = settings.LITELLM_MODEL_NAME
+        self.token_bucket = TokenBucket("llm_tokens", capacity=1000, refill_rate=1000)
+
+    async def get_completion(self, messages: List[Dict[str, str]], **kwargs) -> Optional[Dict[str, Any]]:
+        if not await self.token_bucket.consume(1):
+            raise Exception("Rate limit exceeded (Token Bucket)")
+
+        try:
+            response = await litellm.acompletion(
+                model=self.model,
+                messages=messages,
+                timeout=30,
+                **kwargs
+            )
+            return response
+        except Exception as e:
+            # Add logging here
+            print(f"LLM Error: {e}")
+            raise
+
+
+llm_service = LLMService()
+---------------------------------------------------------
+app\services\rate_limit_service.py
+---------------------------------------------------------
+import asyncio
+import time
+from app.core.config import settings
+from app.core.security import redis_client
+
+class RateLimiter:
+    def __init__(self, key_prefix: str, limit: int, period: int):
+        self.key_prefix = key_prefix
+        self.limit = limit
+        self.period = period
+
+    async def acquire(self):
+        if not redis_client:
+            return True # No Redis, no rate limit
+            
+        key = f"rate_limit:{self.key_prefix}"
+        while True:
+            current = await redis_client.get(key)
+            if current is None:
+                await redis_client.setex(key, self.period, 1)
+                return True
+            
+            if int(current) < self.limit:
+                await redis_client.incr(key)
+                return True
+            
+            # Wait a bit before retrying
+            await asyncio.sleep(1)
+
+class CircuitBreaker:
+    def __init__(self, name: str, threshold: int = 5, period: int = 60, reset_timeout: int = 300):
+        self.name = name
+        self.threshold = threshold
+        self.period = period
+        self.reset_timeout = reset_timeout
+
+    async def check(self):
+        if not redis_client:
+            return True # No Redis, assume open (functional)
+            
+        if await redis_client.get(f"cb:{self.name}:open"):
+            return False
+        return True
+
+    async def record_failure(self):
+        if not redis_client:
+            return
+            
+        key = f"cb:{self.name}:failures"
+        failures = await redis_client.incr(key)
+        if failures == 1:
+            await redis_client.expire(key, self.period)
+        
+        if failures >= self.threshold:
+            await redis_client.setex(f"cb:{self.name}:open", self.reset_timeout, "1")
+            await redis_client.delete(key)
+
+llm_rate_limiter = RateLimiter("llm", limit=10, period=60) # 10 requests per minute
+llm_circuit_breaker = CircuitBreaker("llm")
+
+---------------------------------------------------------
+app\services\storage_service.py
+---------------------------------------------------------
+import aioboto3
+import os
+import aiofiles
+from app.core.config import settings
+from typing import BinaryIO
+from abc import ABC, abstractmethod
+
+class BaseStorageService(ABC):
+    @abstractmethod
+    async def upload_file(self, file_data: BinaryIO, file_key: str) -> str:
+        pass
+
+    @abstractmethod
+    async def get_presigned_url(self, file_key: str, expires_in: int = 3600) -> str:
+        pass
+
+    @abstractmethod
+    async def download_file(self, file_key: str) -> bytes:
+        pass
+
+class S3StorageService(BaseStorageService):
+    def __init__(self):
+        self.session = aioboto3.Session()
+        self.bucket_name = settings.S3_BUCKET
+
+    async def upload_file(self, file_data: BinaryIO, file_key: str):
+        async with self.session.client(
+            "s3",
+            endpoint_url=settings.S3_ENDPOINT,
+            aws_access_key_id=settings.S3_ACCESS_KEY,
+            aws_secret_access_key=settings.S3_SECRET_KEY,
+        ) as s3:
+            await s3.upload_fileobj(file_data, self.bucket_name, file_key)
+        return file_key
+
+    async def get_presigned_url(self, file_key: str, expires_in: int = 3600):
+        async with self.session.client(
+            "s3",
+            endpoint_url=settings.S3_ENDPOINT,
+            aws_access_key_id=settings.S3_ACCESS_KEY,
+            aws_secret_access_key=settings.S3_SECRET_KEY,
+        ) as s3:
+            url = await s3.generate_presigned_url(
+                'get_object',
+                Params={'Bucket': self.bucket_name, 'Key': file_key},
+                ExpiresIn=expires_in
+            )
+        return url
+
+    async def download_file(self, file_key: str):
+        async with self.session.client(
+            "s3",
+            endpoint_url=settings.S3_ENDPOINT,
+            aws_access_key_id=settings.S3_ACCESS_KEY,
+            aws_secret_access_key=settings.S3_SECRET_KEY,
+        ) as s3:
+            response = await s3.get_object(Bucket=self.bucket_name, Key=file_key)
+            async with response['Body'] as stream:
+                return await stream.read()
+
+class LocalStorageService(BaseStorageService):
+    def __init__(self):
+        self.base_path = settings.UPLOAD_DIR
+        if not os.path.exists(self.base_path):
+            os.makedirs(self.base_path, exist_ok=True)
+
+    async def upload_file(self, file_data, file_key: str):
+        full_path = os.path.join(self.base_path, file_key)
+        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+        
+        async with aiofiles.open(full_path, mode='wb') as f:
+            if hasattr(file_data, 'read'):
+                # FastAPI UploadFile has an async read() method
+                content = await file_data.read()
+                await f.write(content)
+            else:
+                await f.write(file_data)
+        return file_key
+
+    async def get_presigned_url(self, file_key: str, expires_in: int = 3600):
+        # For local storage, we just return a path or a local URL if we had one
+        # For now, let's return a special string or just the key
+        return f"/api/v1/jobs/download_local/{file_key}"
+
+    async def download_file(self, file_key: str):
+        full_path = os.path.join(self.base_path, file_key)
+        async with aiofiles.open(full_path, mode='rb') as f:
+            return await f.read()
+
+def get_storage_service() -> BaseStorageService:
+    if settings.STORAGE_TYPE == "s3":
+        return S3StorageService()
+    return LocalStorageService()
+
+storage_service = get_storage_service()
+
+---------------------------------------------------------
+app\services\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\templates\admin\dashboard.html
+---------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docxy Admin Dashboard</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="email"] { width: 300px; padding: 8px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Docxy Admin Dashboard</h1>
+    
+    <h2>Create User & API Key</h2>
+    <form action="/api/v1/admin/users" method="post">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="organization">Organization:</label>
+            <input type="text" id="organization" name="organization">
+        </div>
+        <button type="submit">Create User</button>
+    </form>
+
+    <h2>Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Organization</th>
+                <th>Role</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.organization or '-' }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.is_active }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+---------------------------------------------------------
+app\workers\tasks.py
+---------------------------------------------------------
+import os
+import uuid
+import logging
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from app.core.config import settings
+from app.db.models.models import Job, JobStatus
+from app.core.celery_app import celery_app
+
+sync_db_url = settings.DATABASE_URL.replace("+asyncpg", "").replace("+aiosqlite", "")
+sync_engine = create_engine(sync_db_url, echo=False)
+SyncSessionLocal = sessionmaker(bind=sync_engine)
+
+logger = logging.getLogger(__name__)
+
+
+def update_job_status_sync(
+    job_id: str,
+    status: JobStatus,
+    result_url: str = None,
+    error_message: str = None,
+    full_text: str = None
+):
+    session = SyncSessionLocal()
+    try:
+        job_uuid = uuid.UUID(job_id)
+        job = session.get(Job, job_uuid)
+        if job:
+            job.status = status
+            if result_url:
+                job.output_file_url = result_url
+            if error_message:
+                job.error_message = error_message
+            if full_text is not None:
+                job.full_text = full_text
+            session.commit()
+    except Exception as e:
+        session.rollback()
+        logger.error(f"Failed to update job {job_id}: {e}")
+        raise
+    finally:
+        session.close()
+
+
+def _execute_job(job_id: str):
+    try:
+        logger.info(f"Processing job {job_id}")
+
+        session = SyncSessionLocal()
+        job_uuid = uuid.UUID(job_id)
+        job = session.get(Job, job_uuid)
+        session.close()
+
+        if not job:
+            raise ValueError(f"Job {job_id} not found")
+
+        input_file_url = job.input_file_url
+
+        if settings.STORAGE_TYPE == "local":
+            pdf_path = os.path.join(settings.UPLOAD_DIR, input_file_url)
+            if not os.path.exists(pdf_path):
+                raise FileNotFoundError(f"PDF not found: {pdf_path}")
+
+            result_dir = os.path.join(settings.UPLOAD_DIR, "results", job_id)
+            os.makedirs(result_dir, exist_ok=True)
+
+            from app.services.extraction_service import extract_tables_from_pdf
+            temp_excel_path, full_text = extract_tables_from_pdf(pdf_path, result_dir)
+
+            final_filename = f"{job_id}.xlsx"
+            final_excel_path = os.path.join(result_dir, final_filename)
+            os.rename(temp_excel_path, final_excel_path)
+
+            # Verify the file exists
+            if not os.path.isfile(final_excel_path):
+                raise RuntimeError(f"Expected file {final_excel_path} does not exist after rename")
+
+            result_url = os.path.relpath(final_excel_path, settings.UPLOAD_DIR).replace("\\", "/")
+        else:
+            result_url = f"results/{job_id}/{job_id}.xlsx"
+            full_text = "S3 storage not implemented; no text extracted."
+            logger.warning("S3 storage not fully implemented; using dummy result.")
+
+        update_job_status_sync(job_id, JobStatus.COMPLETED, result_url, full_text=full_text)
+        logger.info(f"Finished job {job_id}")
+    except Exception as e:
+        logger.exception(f"Job {job_id} failed")
+        update_job_status_sync(job_id, JobStatus.FAILED, error_message=str(e))
+
+
+@celery_app.task(name="app.workers.tasks.process_pdf_job")
+def process_pdf_job(job_id: str):
+    _execute_job(job_id)
+
+
+def process_pdf_job_sync(job_id: str):
+    _execute_job(job_id)
+---------------------------------------------------------
+app\workers\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+app\__init__.py
+---------------------------------------------------------
+
+---------------------------------------------------------
+check_db.py
+---------------------------------------------------------
+import sqlite3
+import hashlib
+
+def hash_api_key(api_key: str) -> str:
+    return hashlib.sha256(api_key.encode()).hexdigest()
+
+def check_db():
+    conn = sqlite3.connect('docxy.db')
+    cursor = conn.cursor()
+    
+    print("Tables:")
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    print(cursor.fetchall())
+    
+    print("\nUsers:")
+    cursor.execute("SELECT id, email FROM users;")
+    users = cursor.fetchall()
+    print(users)
+    
+    print("\nAPI Keys:")
+    cursor.execute("SELECT id, user_id, key_prefix FROM api_keys;")
+    print(cursor.fetchall())
+    
+    conn.close()
+
+if __name__ == "__main__":
+    check_db()
+
+---------------------------------------------------------
+check_imports.py
+---------------------------------------------------------
+
+try:
+    from app.api.v1.api import api_router
+    print("app.api.v1.api import successful")
+except ImportError as e:
+    print(f"app.api.v1.api import failed: {e}")
+
+try:
+    from app.main import app
+    print("app.main import successful")
+except ImportError as e:
+    print(f"app.main import failed: {e}")
+
+---------------------------------------------------------
+create_key.py
+---------------------------------------------------------
+import asyncio
+import secrets
+from sqlalchemy.future import select
+from app.db.session import AsyncSessionLocal
+from app.db.models.models import User, APIKey
+from app.core.security import hash_api_key
+
+async def create_known_key():
+    async with AsyncSessionLocal() as db:
+        result = await db.execute(select(User).where(User.email == "admin"))
+        admin = result.scalar_one_or_none()
+        
+        if not admin:
+            print("Admin not found, creating one...")
+            admin = User(email="admin", is_active=True)
+            db.add(admin)
+            await db.commit()
+            await db.refresh(admin)
+        
+        plain_key = "sk_test_key_1234567890"
+        key_hash = hash_api_key(plain_key)
+        
+        # Check if it exists
+        result = await db.execute(select(APIKey).where(APIKey.key_hash == key_hash))
+        existing = result.scalar_one_or_none()
+        
+        if not existing:
+            api_key = APIKey(
+                user_id=admin.id,
+                key_hash=key_hash,
+                key_prefix=plain_key[:8]
+            )
+            db.add(api_key)
+            await db.commit()
+            print(f"Created key: {plain_key}")
+        else:
+            print(f"Key already exists: {plain_key}")
+
+if __name__ == "__main__":
+    asyncio.run(create_known_key())
+
+---------------------------------------------------------
+docker-compose.yml
+---------------------------------------------------------
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: pdf_extractor_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-pdf_extractor}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: pdf_extractor_redis
+    command: redis-server --requirepass ${REDIS_PASSWORD:-redis_password}
+    ports:
+      - "6379:6379"
+
+  minio:
+    image: minio/minio:latest
+    container_name: pdf_extractor_minio
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:-minioadmin}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  llm:
+    image: ollama/ollama:latest
+    container_name: pdf_extractor_llm
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+
+  api:
+    build: .
+    container_name: pdf_extractor_api
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  worker:
+    build: .
+    container_name: pdf_extractor_worker
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    command: celery -A app.core.celery_app worker --loglevel=info
+
+volumes:
+  postgres_data:
+  minio_data:
+  ollama_data:
+
+---------------------------------------------------------
+Dockerfile
+---------------------------------------------------------
+FROM python:3.10-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set work directory
+WORKDIR /code
+
+# Install system dependencies for PaddleOCR and Torch
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install dependencies
+COPY requirements.txt /code/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy project
+COPY . /code/
+
+---------------------------------------------------------
+README.md
+---------------------------------------------------------
+# Docxy - High-Performance PDF Table Extractor
+
+Docxy is a scalable, AI-powered system for extracting tabular data from PDF documents using PaddleOCR, TableTransformer, and LiteLLM.
+
+## Setup & Run Instructions
+
+1.  **Clone & Config:**
+    ```bash
+    cp .env.example .env
+    # Edit .env with your S3 and LLM details
+    ```
+2.  **Start Stack:**
+    ```bash
+    docker-compose up -d
+    ```
+3.  **Run Migrations:**
+    ```bash
+    docker-compose exec api alembic upgrade head
+    ```
+4.  **Create Admin User:**
+    ```bash
+    docker-compose exec api python app/core/init_admin.py
+    ```
+5.  **Access:**
+    *   API: `http://localhost:8000`
+    *   Admin Dashboard: `http://localhost:8000/api/v1/admin`
+    *   Health: `http://localhost:8000/api/v1/health`
+    *   Docs: `http://localhost:8000/docs`
+
+## Architecture
+
+- **FastAPI**: Main API for job management and user authentication.
+- **Celery**: Distributed task queue for long-running PDF processing jobs.
+- **PostgreSQL**: Relational database for storing users, jobs, and extracted data.
+- **Redis**: Rate limiting, caching, and Celery broker.
+- **MinIO**: S3-compatible object storage for PDF uploads and cropped images.
+- **LiteLLM**: Unified interface for LLM completions (Ollama/OpenAI/vLLM).
+
+## Development
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run Tests
+
+```bash
+pytest
+```
+
+---------------------------------------------------------
+requirements.txt
+---------------------------------------------------------
+# Core API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+jinja2==3.1.2
+slowapi==0.1.9
+structlog==24.1.0
+
+# Database & Migrations
+sqlalchemy[asyncio]==2.0.23
+asyncpg==0.29.0
+alembic==1.13.0
+
+# Task Queue & Cache
+celery==5.3.4
+redis==5.0.1
+
+# External Services
+litellm==1.0.0
+aioboto3==12.3.0
+httpx==0.25.1
+
+# OCR & AI Models (placeholders, not fully integrated yet)
+paddleocr==2.7.0
+paddlepaddle==2.5.2
+transformers==4.35.0
+torch==2.1.0
+pillow==10.1.0
+pdf2image==1.16.3
+opencv-python==4.8.1.78
+imagehash==4.3.1
+pandas==2.1.3
+timm==0.9.12  # Required by TableTransformer
+
+# Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+---------------------------------------------------------
+run.py
+---------------------------------------------------------
+import uvicorn
+import os
+import sys
+
+# Ensure project root is in path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+if __name__ == "__main__":
+    print("Starting Docxy API on http://127.0.0.1:8000")
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+
+---------------------------------------------------------
+tests\test_auth.py
+---------------------------------------------------------
+import pytest
+from httpx import AsyncClient, ASGITransport
+from app.main import app
+from app.core.config import settings
+
+@pytest.mark.asyncio
+async def test_auth_protected_route_without_key():
+    import uuid
+    job_id = uuid.uuid4()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.get(f"{settings.API_V1_STR}/jobs/{job_id}")
+    assert response.status_code == 403
+
+@pytest.mark.asyncio
+async def test_auth_protected_route_with_invalid_key():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.post(
+            f"{settings.API_V1_STR}/jobs",
+            headers={"Authorization": "Bearer invalid_key"}
+        )
+    assert response.status_code == 401
+
+---------------------------------------------------------
+tests\test_health.py
+---------------------------------------------------------
+import pytest
+from httpx import AsyncClient, ASGITransport
+from app.main import app
+from app.core.config import settings
+
+@pytest.mark.asyncio
+async def test_health_check():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        response = await ac.get(f"{settings.API_V1_STR}/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"
+
+---------------------------------------------------------
+tests\test_workers.py
+---------------------------------------------------------
+import pytest
+from unittest.mock import patch, MagicMock
+from app.workers.tasks import process_pdf_job
+
+@pytest.mark.asyncio
+async def test_process_pdf_job_mock():
+    # Since the task is now sync, we can call it directly
+    with patch("app.workers.tasks.time.sleep", return_value=None):
+        result = process_pdf_job("test_job_id")
+        assert result["status"] == "success"
+        assert result["job_id"] == "test_job_id"
+---------------------------------------------------------
+trial\test_api.py
+---------------------------------------------------------
+import requests
+import time
+import os
+
+API_BASE_URL = "http://127.0.0.1:8000/api/v1"
+API_KEY = "sk_test_key_1234567890"
+FILE_PATH = "table.pdf"
+
+def test_api():
+    headers = {"Authorization": f"Bearer {API_KEY}"}
+    
+    # 1. Create Job
+    print(f"Uploading {FILE_PATH}...")
+    if not os.path.exists(FILE_PATH):
+        print(f"Error: {FILE_PATH} not found in {os.getcwd()}")
+        return
+
+    with open(FILE_PATH, "rb") as f:
+        files = {"file": (FILE_PATH, f, "application/pdf")}
+        response = requests.post(f"{API_BASE_URL}/jobs", headers=headers, files=files)
+    
+    if response.status_code != 201:
+        print(f"Failed to create job: {response.status_code} {response.text}")
+        return
+    
+    job_id = response.json()["job_id"]
+    print(f"Job created! ID: {job_id}")
+    
+    # 2. Poll for status
+    while True:
+        status_response = requests.get(f"{API_BASE_URL}/jobs/{job_id}", headers=headers)
+        if status_response.status_code != 200:
+            print(f"Failed to get status: {status_response.status_code} {status_response.text}")
+            return
+            
+        status_data = status_response.json()
+        status = status_data["status"]
+        print(f"Current status: {status}")
+        
+        if status == "COMPLETED":
+            break
+        elif status == "FAILED":
+            print(f"Job failed! Error: {status_data.get('error_message')}")
+            return
+        
+        time.sleep(1)
+    
+    # 3. Get download URL
+    download_response = requests.get(f"{API_BASE_URL}/jobs/{job_id}/download", headers=headers)
+    if download_response.status_code != 200:
+        print(f"Failed to get download URL: {download_response.status_code} {download_response.text}")
+        return
+        
+    download_url = download_response.json()["download_url"]
+    
+    # Handle local download URL
+    if download_url.startswith("/"):
+        download_url = f"http://127.0.0.1:8000{download_url}"
+        
+    print(f"Downloading from {download_url}...")
+    
+    # 4. Download file
+    file_response = requests.get(download_url)
+    output_filename = f"result_{job_id}.xlsx"
+    with open(output_filename, "wb") as f:
+        f.write(file_response.content)
+    
+    print(f"Saved result to {output_filename}")
+
+if __name__ == "__main__":
+    # Change to the script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(script_dir)
+    test_api()
+
+---------------------------------------------------------
