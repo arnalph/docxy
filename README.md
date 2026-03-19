@@ -1,4 +1,3 @@
-```markdown
 # 📄 Docxy
 
 **High‑Performance PDF Table Extraction API**
