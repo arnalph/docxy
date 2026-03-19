@@ -2,6 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Backgro
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 import uuid
+import os
+from fastapi.responses import FileResponse
+
 from app.db.session import get_db
 from app.db.models.models import Job, User, JobStatus
 from app.core.security import get_current_user
@@ -9,19 +12,45 @@ from app.core.config import settings
 from app.services.storage_service import storage_service
 from app.workers.tasks import process_pdf_job, process_pdf_job_sync
 
-from fastapi.responses import FileResponse
-import os
-
 router = APIRouter()
 
 
 @router.get("/download_local/{path:path}")
-async def download_local(path: str):
+async def download_local(
+    path: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Serve a local file. The path must be under the results directory and the job must belong to the current user.
+    """
+    # Ensure the path is under "results/" to restrict access
+    if not path.startswith("results/"):
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    # Extract job ID from the path (format: results/{job_id}/...)
+    parts = path.split('/')
+    if len(parts) < 2 or parts[0] != "results":
+        raise HTTPException(status_code=400, detail="Invalid path format")
+
+    job_id_str = parts[1]
+    try:
+        job_uuid = uuid.UUID(job_id_str)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid job ID")
+
+    # Check if the job exists and belongs to the current user
+    result = await db.execute(select(Job).where(Job.id == job_uuid))
+    job = result.scalar_one_or_none()
+    if not job or job.user_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Access denied")
+
     full_path = os.path.join(settings.UPLOAD_DIR, path)
     if not os.path.exists(full_path):
         raise HTTPException(status_code=404, detail="File not found")
     if os.path.isdir(full_path):
         raise HTTPException(status_code=404, detail="Path is a directory, not a file")
+
     return FileResponse(full_path)
 
 
