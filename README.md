@@ -187,11 +187,5 @@ Contributions are welcome! Please open an issue or submit a pull request. For ma
 
 ---
 
-## 📄 License
-
-MIT © [Your Name/Organization]
-
----
-
 <div align="center">Made with ❤️ and ☕</div>
 ```
